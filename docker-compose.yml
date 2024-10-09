@@ -1,18 +1,16 @@
-services:
+
+ services:
   househunt:
     build: .
-     # Run container as the current user making it easier to manage files created by the container.
     user: "${UID}:${GID}"
     env_file:
-    - .env
+      - .env
     environment:
-    # DB_FILENAME is the sqlite database used by the application.
-    - DB_FILENAME=/data/househunt.db
-    # HTTP_VIEW_DIR is the directory where the application will look for templates. Useful to load them from disk when working on the frontend.
-    - HTTP_VIEW_DIR=/assets/templates
+      # Any other environment variables can be specified here if needed.
+      - DB_FILENAME=/data/househunt.db
+      - HTTP_VIEW_DIR=/assets/templates
     volumes:
-    - ./.localdev:/data
-    # Mount the assets directory to the container so that the application can serve the frontend.
-    - ./assets:/assets
+      - ./.localdev:/data
+      - ./assets:/assets
     ports:
-    - "3000:3000"
+      - "8888:8888"
