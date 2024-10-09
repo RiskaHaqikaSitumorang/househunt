@@ -15,4 +15,4 @@ services:
     # Mount the assets directory to the container so that the application can serve the frontend.
     - ./assets:/assets
     ports:
-    - "8888:8888"
+    - "3000:3000"
